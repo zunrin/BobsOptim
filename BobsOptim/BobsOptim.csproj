@@ -34,11 +34,13 @@
     <Reference Include="HearthstoneDeckTracker">
       <HintPath>..\..\..\..\AppData\Local\HearthstoneDeckTracker\app-1.17.10\HearthstoneDeckTracker.exe</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\PresentationFramework.4.6.0\lib\PresentationFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,10 +51,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BobsOptimPlugin.cs" />
+    <Compile Include="HelloWorldController.cs" />
+    <Compile Include="HelloWorldWindow.xaml.cs">
+      <DependentUpon>HelloWorldWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="HelloWorldWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

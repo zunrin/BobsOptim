@@ -1,4 +1,6 @@
-﻿using Hearthstone_Deck_Tracker.Plugins;
+﻿using Hearthstone_Deck_Tracker.API;
+using Hearthstone_Deck_Tracker.Plugins;
+using Hearthstone_Deck_Tracker.Utility.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,18 @@ namespace BobsOptim
 {
     public class BobsOptimPlugin : IPlugin
     {
+        private HelloWorldWindow helloWorldWindow;
+
         public void OnLoad()
         {
-            // Triggered upon startup and when the user ticks the plugin on
+            Log.Info("Loaded bobs optim");
+            helloWorldWindow = new HelloWorldWindow();
+            Core.OverlayCanvas.Children.Add(helloWorldWindow);
+
+            HelloWorldController hwController = new HelloWorldController(helloWorldWindow);
+            GameEvents.OnGameStart.Add(hwController.GameStart);
+            GameEvents.OnInMenu.Add(hwController.InMenu);
+            GameEvents.OnTurnStart.Add(hwController.TurnStart);
         }
 
         public void OnUnload()
